@@ -1,0 +1,48 @@
+body {
+  height: 100vh;
+  width: 100vw;
+  font-size: 16px;
+  color: #272727;
+  background-color: #f3f7f7;
+}
+
+.qz-footer button {
+  margin: 1rem;
+}
+
+.qz-option {
+  display: flex;
+  margin: 2rem 0;
+}
+
+.qz-option input {
+  margin-top: 6px;
+}
+
+.qa-timer {
+  position: absolute;
+  right: 1rem;
+}
+
+.qz-ans-container {
+  margin: 2.5rem auto;
+}
+
+.qz-ans-container .row {
+  line-height: 2.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 2px;
+  border: 1px solid lightgray;
+}
+
+.qz-ans-header.row {
+  font-weight: 500;
+}
+
+.row div:first-child {
+  border-right: 1px solid lightgray;
+}
+
+.row div:last-child {
+  border-right: 1px solid lightgray;
+}
