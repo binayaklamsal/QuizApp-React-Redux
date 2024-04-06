@@ -1,19 +1,49 @@
-import React from "react";
-import { Provider } from "react-redux";
-import { applyMiddleware, createStore } from "redux";
 
+
+import { useState } from "react";
 import "./App.css";
-import reducer from "./components/reducers/AppState";
-import DummyRoute from "./components/DummyRoute";
+import questions from "./questions.json";
+import Question from "./questions/questions";
+import Result from "./questions/results";
 
-const store = createStore(reducer, applyMiddleware());
+function App() {
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [userAnswers, setUserAnswers] = useState([]);
 
-const App = () => {
+
+
+  const handleNextQuestion = (isCorrect) => {
+    setCurrentQuestion(currentQuestion + 1);
+    setUserAnswers([...userAnswers, isCorrect]);
+  };
+
+  const resetQuiz = () => {
+    setCurrentQuestion(0);
+    setUserAnswers([]);
+  };
+
   return (
-    <Provider store={store}>
-      <DummyRoute />
-    </Provider>
+    <div className="App">
+      <h1>World Quiz</h1>
+
+      {/* Questions Component */}
+      {currentQuestion < questions.length && (
+        <Question
+          question={questions[currentQuestion]}
+          onAnswerClick={handleNextQuestion}
+        />
+      )}
+
+      {/* Result Component */}
+      {currentQuestion === questions.length && (
+        <Result
+          userAnswers={userAnswers}
+          questions={questions}
+          resetQuiz={resetQuiz}
+        />
+      )}
+    </div>
   );
-};
+}
 
 export default App;
